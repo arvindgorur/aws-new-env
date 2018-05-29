@@ -1,8 +1,13 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "${var.default_region}"
 }
 
-resource "aws_instance" "test" {
-  ami           = "ami-a4dc46db"
-  instance_type = "t2.micro"
+module "dev_server" {
+  source   = "./instances"
+  name     = "dev_server"
+  key_name = "servers"
+}
+
+output "region" {
+  value = "${var.default_region}"
 }
