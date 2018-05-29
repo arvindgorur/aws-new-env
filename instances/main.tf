@@ -1,6 +1,3 @@
-variable "name" {}
-variable "key_name" {}
-
 resource "aws_instance" "instance" {
   ami           = "ami-a4dc46db"
   instance_type = "t2.micro"
@@ -9,8 +6,4 @@ resource "aws_instance" "instance" {
   tags {
     Name = "${var.name}"
   }
-}
-
-output "public_ip" {
-  value = "${aws_instance.instance.public_ip}"
 }
