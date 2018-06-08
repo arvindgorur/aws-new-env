@@ -7,7 +7,7 @@ resource "aws_security_group" "this" {
 resource "aws_security_group_rule" "this" {
   count = "${length(var.ingress_rules)}"
 
-  security_group_id = "${aws_security_group.my_default_sg.id}"
+  security_group_id = "${aws_security_group.this.id}"
   type              = "ingress"
 
   cidr_blocks = "${var.ingress_cidr_blocks}"

@@ -8,7 +8,7 @@ variable "rules" {
     "http-8080-tcp" = [8080, 8080, "tcp", "HTTP"]
 
     #HTTPS
-    "https-443-tcp" = [443, 443, "tcp", "HTTPs"]
+    "https-443-tcp" = [443, 443, "tcp", "HTTPS"]
 
     #SSH
     "ssh-22-tcp" = [22, 22, "tcp", "SSH"]
