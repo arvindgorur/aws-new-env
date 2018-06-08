@@ -26,8 +26,6 @@ output "region" {
 #  value = "${module.docker_dev_server.public_ip}"
 #}
 
-
-#output "rules_count" {
-#  value = "${module.my_default_sg.rules_count}"
-#}
-
+output "sec_group_id" {
+  value = "${module.my_default_sg.sec_group_id}"
+}
