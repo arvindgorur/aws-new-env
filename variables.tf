@@ -17,8 +17,3 @@ variable "default_vpc_security_group" {
   description = "Default VPC security group ID"
   default     = "sg-66b51d0d"
 }
-
-variable "default_security_group" {
-  description = "Default custom security group ID"
-  default     = "sg-60b40a29"
-}
