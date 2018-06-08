@@ -9,7 +9,7 @@ provider "aws" {
 #}
 
 module "my_default_sg" {
-  source      = "./security_group"
+  source      = "./security_groups"
   name        = "my_default_sg"
   description = "Default custom security group"
   vpc_id      = "${var.default_vpc_id}"
