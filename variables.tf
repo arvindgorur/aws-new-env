@@ -1,6 +1,11 @@
 variable "default_region" {
   description = "Default region"
-  default     = "us-east-1"
+  default     = "ca-central-1"
+}
+
+variable "default_vpc_id" {
+  description = "Default VPC ID"
+  default     = "vpc-e2228f8a"
 }
 
 variable "default_instance_type" {
@@ -10,7 +15,7 @@ variable "default_instance_type" {
 
 variable "default_vpc_security_group" {
   description = "Default VPC security group ID"
-  default     = "sg-9e51dbe9"
+  default     = "sg-66b51d0d"
 }
 
 variable "default_security_group" {
