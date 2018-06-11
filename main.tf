@@ -27,6 +27,13 @@ module "docker_nic" {
   name            = "docker_dev_server"
 }
 
+module "my_dynamodb_table" {
+  source         = "./dynamodb"
+  table_name     = "test_table"
+  read_capacity  = 1
+  write_capacity = 1
+}
+
 output "region" {
   value = "${var.default_region}"
 }
@@ -41,4 +48,17 @@ output "sec_group_id" {
 
 output "nic_id" {
   value = "${module.docker_nic.nic_id}"
+}
+
+#DynamoDB outputs
+output "table_arn" {
+  value = "${module.my_dynamodb_table.table_arn}"
+}
+
+output "table_id" {
+  value = "${module.my_dynamodb_table.table_id}"
+}
+
+output "table_hash_key" {
+  value = "${module.my_dynamodb_table.hash_key}"
 }
