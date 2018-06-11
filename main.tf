@@ -2,11 +2,16 @@ provider "aws" {
   region = "${var.default_region}"
 }
 
-#module "docker_dev_server" {
-#  source   = "./instances"
-#  name     = "dockerdev_server"
-#  key_name = "servers"
-#}
+module "docker_dev_server" {
+  source   = "./instances"
+  ami      = "${var.default_ami}"
+  name     = "docker_dev_server"
+  key_name = "CA-Central-Servers"
+
+  availability_zone = "ca-central-1a"
+
+  nic_id = "${module.docker_nic.nic_id}"
+}
 
 module "my_default_sg" {
   source      = "./security_groups"
@@ -18,27 +23,27 @@ module "my_default_sg" {
   ingress_rules       = ["https-443-tcp", "http-80-tcp", "ssh-22-tcp"]
 }
 
-module "network_interface" {
+module "docker_nic" {
   source          = "./network_interfaces"
   security_groups = ["${module.my_default_sg.sec_group_id}", "sg-66b51d0d"]
 
-  #private_ips     = "ansible-control-server"
   private_ips = ["172.31.16.10"]
-  name        = "Test"
+
+  name = "docker_dev_server"
 }
 
 output "region" {
   value = "${var.default_region}"
 }
 
-#output "public_ip" {
-#  value = "${module.docker_dev_server.public_ip}"
-#}
+output "public_ip" {
+  value = "${module.docker_dev_server.public_ip}"
+}
 
 output "sec_group_id" {
   value = "${module.my_default_sg.sec_group_id}"
 }
 
 output "nic_id" {
-  value = "${module.network_interface.nic_id}"
+  value = "${module.docker_nic.nic_id}"
 }

@@ -13,6 +13,11 @@ variable "default_instance_type" {
   default     = "t2.micro"
 }
 
+variable "default_ami" {
+  description = "Default instance AMI"
+  default     = "ami-7e21a11a"
+}
+
 variable "default_vpc_security_group" {
   description = "Default VPC security group ID"
   default     = "sg-66b51d0d"
