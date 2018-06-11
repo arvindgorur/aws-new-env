@@ -3,22 +3,19 @@ provider "aws" {
 }
 
 module "docker_dev_server" {
-  source   = "./instances"
-  ami      = "${var.default_ami}"
-  name     = "docker_dev_server"
-  key_name = "CA-Central-Servers"
-
+  source            = "./instances"
+  ami               = "${var.default_ami}"
+  name              = "docker_dev_server"
+  key_name          = "CA-Central-Servers"
   availability_zone = "ca-central-1a"
-
-  nic_id = "${module.docker_nic.nic_id}"
+  nic_id            = "${module.docker_nic.nic_id}"
 }
 
 module "my_default_sg" {
-  source      = "./security_groups"
-  name        = "my_default_sg"
-  description = "Default custom security group"
-  vpc_id      = "${var.default_vpc_id}"
-
+  source              = "./security_groups"
+  name                = "my_default_sg"
+  description         = "Default custom security group"
+  vpc_id              = "${var.default_vpc_id}"
   ingress_cidr_blocks = ["0.0.0.0/0"]
   ingress_rules       = ["https-443-tcp", "http-80-tcp", "ssh-22-tcp"]
 }
@@ -26,10 +23,8 @@ module "my_default_sg" {
 module "docker_nic" {
   source          = "./network_interfaces"
   security_groups = ["${module.my_default_sg.sec_group_id}", "sg-66b51d0d"]
-
-  private_ips = ["172.31.16.10"]
-
-  name = "docker_dev_server"
+  private_ips     = ["172.31.16.10"]
+  name            = "docker_dev_server"
 }
 
 output "region" {
