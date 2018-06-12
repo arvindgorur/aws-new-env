@@ -12,5 +12,8 @@ variable "rules" {
 
     #SSH
     "ssh-22-tcp" = [22, 22, "tcp", "SSH"]
+
+    #my-wx-app
+    "http-3000-tcp" = [3000, 3000, "tcp", "my-wx-app"]
   }
 }

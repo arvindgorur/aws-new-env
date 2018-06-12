@@ -1,6 +1,7 @@
 #Files
 
 *.pem
+*.ppk
 *.tfstate*
 *.txt
 *.tfvars
