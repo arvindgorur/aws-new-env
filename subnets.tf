@@ -4,6 +4,7 @@ module "subnet_dmz" {
   cidr_block        = "192.168.1.0/24"
   availability_zone = "ca-central-1a"
   subnet_name       = "DMZ"
+  assign_public_ip  = true
 }
 
 module "internal_1" {
