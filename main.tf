@@ -38,6 +38,10 @@ output "table_id" {
   value = "${module.my_dynamodb_table.table_id}"
 }
 
+output "vpc_id" {
+  value = "${module.new_vpc.vpc_id}"
+}
+
 output "table_hash_key" {
   value = "${module.my_dynamodb_table.hash_key}"
 }
