@@ -13,6 +13,9 @@ variable "rules" {
     #SSH
     "ssh-22-tcp" = [22, 22, "tcp", "SSH"]
 
+    #Prometheus
+    "http-9090-tcp" = [9090, 9090, "tcp", "Prometheus"]
+
     #my-wx-app
     "http-3000-tcp" = [3000, 3000, "tcp", "my-wx-app"]
   }
